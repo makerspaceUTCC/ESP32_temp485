@@ -75,7 +75,10 @@ void loop()
 */
     
     u8g2.sendBuffer();
-
+    if (!client.connected()) {
+    connect_MQTT();
+    }
+    client.loop();
     pubmqtt(humidity, temp);
     
     delay(2000);
@@ -95,10 +98,10 @@ void pubmqtt(float humidity, float temp)
 {
     String hs="Hum: "+ String (humidity) +" % ";
     String ts="Temp: "+ String(temp) +" C ";
+    // PUBLISH to the MQTT Broker 
     if (client.publish(temperature_topic, String(ts).c_str())) {
     Serial.println("Temperature sent!");
     }
-    // PUBLISH to the MQTT Broker (topic = Humidity, defined at the beginning)
     if (client.publish(humidity_topic, String(hs).c_str())) {
       Serial.println("Humidity sent!");
     }
