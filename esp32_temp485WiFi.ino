@@ -10,8 +10,8 @@
 #include "LCDDisp.h"
 
 
-const char* ssid = "ticha 2.4g";                 // Your personal network SSID
-const char* wifi_password = "art4pond4@"; // Your personal network password
+const char* ssid = "xxxx";                 // Your personal network SSID
+const char* wifi_password = "xxx"; // Your personal network password
 
 byte Adrr=0x01;
 byte Fcode=0x04; // Fcode=0x04 read input register  modbus code
